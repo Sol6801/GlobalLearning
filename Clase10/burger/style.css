@@ -1,0 +1,26 @@
+#menu{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+#top-bar,#bar,#bottom-bar{  
+    content: '';
+    width: 85%;
+    height: 15px;
+    background-color: black;
+    margin: 40px;
+    border-radius:50px;
+}
+
+#menu:hover #top-bar{
+  transform: rotate(45deg) translateX(40px) translateY(40px);
+  transition:800ms;
+}
+#menu:hover #bottom-bar{
+  transform: rotate(-225deg);
+  transition:800ms;
+}
+#menu:hover #bar{
+transition:800ms;
+display: none;
+}
