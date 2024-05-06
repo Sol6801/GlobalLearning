@@ -1,5 +1,118 @@
+:root {
+    --bgc-lila: #E4BFFC;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9rem;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+body{
+    background-color:var(--bgc-lila);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+}
+article{
+    float: left;
+    width:210px;
+    min-width: 210px;
+    aspect-ratio: 3/5;
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 8fr;  
+    overflow: hidden;
+    overflow-wrap: break-word;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background-color: white;
+}
+section{
+    
+  word-break: break-all;
+}
+.on-top{
+    position: relative;
+    display: block;
+    background-color: white;
+    background-image:url(images/cats2.jpg);
+}
+.img{
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    background-image:url(images/tuxedocat.png);
+    background-size: contain;
+    background-color: var(--bgc-lila);
+    z-index: 10;
+    border: 5px solid white;
+    height: 100px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+.imgnegro{
+    background-image:url(images/blackcat.png);
+}
+.under{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+    overflow-wrap: break-word;
+    margin: auto;
+    padding: 1.5rem;
+    top: 5%;
+}
+.negro{
+    height: 170px;
+    width: 80%;
+    justify-content: space-around;
+    margin-top: 30px;
+    padding: 0;
+}
+h1, p, .username{
+    background-color: transparent;
+    padding: 0.1rem;
+    align-self: center;
+}
+.username{
+    color: gray;
+}
+button{
+    all:unset;
+}
+.contacts{
+    height: 30px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5px;
+}
+.fb, .tw, .ig{
+    width: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: contain;
+}
+.fb{
+    background-image:url(images/fb.png);
+}
+.tw{
+    background-image:url(images/tw.png);
+
+}
+.ig{
+    background-image:url(images/ig.png);
 }
