@@ -2,15 +2,26 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
-container{
-    position: absolute;
+body{
+    background-color: #fde2eb;
+}
+h1{
+    color: #960000f6;
+    padding:10px;
+}
+.container{   
+    margin: auto;
+    position: relative;
     display: flex;
+    height: 500px;
     align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 #box{
-    margin: auto;
     display: flex;
     position:relative;
     justify-content: center;
@@ -18,108 +29,65 @@ container{
     height: 90px; 
 }
 
-#heart1, #heart2, #heart3, #heart4, #heart5 { 
+#heart1, #heart2, #heart3{ 
     position: relative; 
     width: 100px; 
     height: 90px; 
     animation-name: beat;
-    animation-duration: 1600ms;
+    animation-duration: 2000ms;
     animation-timing-function: ease-in-out;
-    animation-delay: 0s;
+    animation-delay: 0ms;
     animation-iteration-count: infinite;
     animation-fill-mode:forwards;
     animation-play-state: running;
 } 
-#heart{ 
-    position: relative; 
-    width: 100px; 
-    height: 90px; 
-    animation-name: slide;
-    animation-duration: 1600ms;
-    animation-timing-function: ease-in-out;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-fill-mode:forwards;
-    animation-play-state: running;
-}
+
 #heart2{
     animation-delay: 200ms;
  }
 #heart3{
-    animation-delay: 400ms;
+    animation-delay: 300ms;
 }
-#heart4, #heart5 { 
-    position: relative; 
-    width: 100px; 
-    height: 90px; 
-    animation-name: vanish;
-    animation-duration: 1600ms;
-    animation-timing-function: ease-in-out;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-fill-mode:forwards;
-    animation-play-state: running;
-} 
-#heart4{
-    animation-delay: 400ms;
-}
-#heart5{
-    animation-delay: 500ms;
-}
-
 
 #heart1:before, #heart1:after,
 #heart2:before, #heart2:after,
-#heart3:before, #heart3:after,
-#heart4:before, #heart4:after,
-#heart5:before, #heart5:after { 
+#heart3:before, #heart3:after { 
     position: absolute; 
     content: ""; 
     left: 50px; 
     top: 0; 
     width: 50%; 
     height: 90%; 
-    background: #c50d85;
+    background: #960000f6;
     border-radius: 50px 50px 0 0; 
     transform: rotate(-45deg); 
     transform-origin: 0 100%; 
 } 
 
-#heart1:after, #heart2:after, #heart3:after, #heart4:after, #heart5:after{ 
+#heart1:after, #heart2:after, #heart3:after{ 
     left: 0; 
     transform: rotate(45deg); 
     transform-origin :100% 100%; 
 }
 @keyframes beat{
     0%{
-        transform: scale(0.5) translateX(0px);
+        transform: scale(0.6);
+        opacity: 1;
     }
-    50%{
-        transform: scale(0.75) translateX(0px);
-    }
-    100%{
-        transform: scale(0.5) translateX(0%);
-    }
-}
-@keyframes slide{
-    0%{
-        transform: scale(0.5) translateX(0px);
-    }
-    50%{
-        transform: scale(0.75) translateX(0px);
-    }
-    100%{
-        transform: scale(0.5) translateX(0%);
-    }
-}
-@keyframes vanish{
-    0%{
-        transform: scale(0.5);
-    }
-    50%{
-        transform: scale(0.1);
-    }
-    100%{
+    25%{
         transform: scale(0.25);
+        opacity: 0.5;
+    }
+    50%{
+        transform: scale(0.6) translateY(-50px);
+        opacity: 1;
+    }
+    75%{
+        transform: scale(0.25);
+        opacity: 0.5;
+    }
+    100%{
+        transform: scale(0.6) translateY(0px);
+        opacity: 1;
     }
 }
