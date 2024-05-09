@@ -2,15 +2,17 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
     background-color: #fde2eb;
 }
 h1{
     color: #960000f6;
-    padding:10px;
+    padding-top: 10px;
+    display: relative;
+    float: left;
+    margin: 0;
 }
 .container{   
     margin: auto;
@@ -25,15 +27,21 @@ h1{
     display: flex;
     position:relative;
     justify-content: center;
-    width: 500px; 
-    height: 90px; 
+    width: 500px;
+    height: 90px;
+
+}
+#heart1, #heart2, #heart3{ 
+    width: 100px; 
+    height: 90px;
+    animation-name: beat;
+}
+.dot{
+    animation-name: vanish;
 }
 
-#heart1, #heart2, #heart3{ 
+#heart1, #heart2, #heart3, .dot{ 
     position: relative; 
-    width: 100px; 
-    height: 90px; 
-    animation-name: beat;
     animation-duration: 2000ms;
     animation-timing-function: ease-in-out;
     animation-delay: 0ms;
@@ -42,10 +50,10 @@ h1{
     animation-play-state: running;
 } 
 
-#heart2{
+#heart2, .two{
     animation-delay: 200ms;
  }
-#heart3{
+#heart3, .three{
     animation-delay: 300ms;
 }
 
@@ -89,5 +97,39 @@ h1{
     100%{
         transform: scale(0.6) translateY(0px);
         opacity: 1;
+    }
+}
+@keyframes vanish{
+    0%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes jump{
+    0%{
+        transform: translateY(-15%);
+    }
+    25%{
+        transform: translateY(0%);
+    }
+    50%{
+        transform: translateY(-15%);
+    }
+    75%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(-15%);
     }
 }
