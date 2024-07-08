@@ -1,0 +1,111 @@
+Idea: API para Recomendación de Lugares para Viajar
+Descripción:
+Una API que recomienda lugares para viajar basados en las preferencias de los usuarios, incluyendo información sobre actividades, alojamientos y reseñas.
+
+Componentes:
+Tablas:
+Usuarios (users)
+
+id (primary key, serial)
+username (varchar, unique)
+email (varchar, unique)
+password (varchar)
+created_at (timestamp)
+Lugares (places)
+
+id (primary key, serial)
+name (varchar)
+description (text)
+location (varchar)
+latitude (decimal)
+longitude (decimal)
+average_rating (decimal)
+created_at (timestamp)
+Actividades (activities)
+
+id (primary key, serial)
+place_id (foreign key, references places.id)
+name (varchar)
+description (text)
+activity_date (timestamp)
+location (varchar)
+Alojamientos (accommodations)
+
+id (primary key, serial)
+place_id (foreign key, references places.id)
+name (varchar)
+address (varchar)
+check_in_date (timestamp)
+check_out_date (timestamp)
+price_per_night (decimal)
+Reseñas (reviews)
+
+id (primary key, serial)
+place_id (foreign key, references places.id)
+user_id (foreign key, references users.id)
+rating (integer)
+comment (text)
+created_at (timestamp)
+Relaciones:
+Un lugar puede tener muchas actividades y alojamientos (relación uno a muchos).
+Un usuario puede escribir muchas reseñas (relación uno a muchos).
+Un lugar puede tener muchas reseñas (relación uno a muchos).
+Endpoints de la API:
+Usuarios
+
+POST /users: Crear un nuevo usuario.
+GET /users/<user_id>: Obtener detalles de un usuario específico.
+Lugares
+
+POST /places: Agregar un nuevo lugar.
+GET /places/<place_id>: Obtener detalles de un lugar específico.
+GET /places: Buscar lugares.
+PUT /places/<place_id>: Actualizar la información de un lugar.
+DELETE /places/<place_id>: Eliminar un lugar.
+Actividades
+
+POST /places/<place_id>/activities: Agregar una actividad a un lugar.
+GET /places/<place_id>/activities: Obtener todas las actividades de un lugar.
+PUT /activities/<activity_id>: Actualizar una actividad.
+DELETE /activities/<activity_id>: Eliminar una actividad.
+Alojamientos
+
+POST /places/<place_id>/accommodations: Agregar un alojamiento a un lugar.
+GET /places/<place_id>/accommodations: Obtener todos los alojamientos de un lugar.
+PUT /accommodations/<accommodation_id>: Actualizar un alojamiento.
+DELETE /accommodations/<accommodation_id>: Eliminar un alojamiento.
+Reseñas
+
+POST /places/<place_id>/reviews: Agregar una reseña a un lugar.
+GET /places/<place_id>/reviews: Obtener todas las reseñas de un lugar.
+PUT /reviews/<review_id>: Actualizar una reseña.
+DELETE /reviews/<review_id>: Eliminar una reseña.
+Flujos Principales:
+Crear un usuario:
+
+Endpoint: POST /users
+Datos necesarios: username, email, password
+Agregar un lugar:
+
+Endpoint: POST /places
+Datos necesarios: name, description, location, latitude, longitude
+Agregar una actividad a un lugar:
+
+Endpoint: POST /places/<place_id>/activities
+Datos necesarios: name, description, activity_date, location
+Agregar un alojamiento a un lugar:
+
+Endpoint: POST /places/<place_id>/accommodations
+Datos necesarios: name, address, check_in_date, check_out_date, price_per_night
+Agregar una reseña a un lugar:
+
+Endpoint: POST /places/<place_id>/reviews
+Datos necesarios: user_id, rating, comment
+Posibles Mejoras Futuras:
+Autenticación y autorización para proteger los endpoints.
+Sistema de recomendaciones personalizadas basado en las preferencias del usuario y sus reseñas anteriores.
+Integración con servicios externos para obtener información adicional sobre lugares y actividades.
+Funcionalidad para compartir listas de lugares y actividades favoritas con otros usuarios.
+Notificaciones de nuevas actividades o eventos en los lugares de interés del usuario.
+Sistema de puntos o recompensas por dejar reseñas y comentarios.
+Esta estructura proporciona una base sólida para una API de recomendación de lugares para viajar, permitiendo a los usuarios descubrir nuevos destinos, actividades y alojamientos basados en sus preferencias y reseñas de otros usuarios.

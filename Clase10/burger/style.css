@@ -1,4 +1,4 @@
-#menu{
+#burger{
     width: 200px;
     height: 200px;
     cursor: pointer;
@@ -12,15 +12,15 @@
     border-radius:50px;
 }
 
-#menu:hover #top-bar{
+#burger:hover #top-bar{
   transform: rotate(45deg) translateX(40px) translateY(40px);
-  transition:800ms;
+  transition:450ms;
 }
-#menu:hover #bottom-bar{
+#burger:hover #bottom-bar{
   transform: rotate(-225deg);
-  transition:800ms;
+  transition:450ms;
 }
-#menu:hover #bar{
-transition:800ms;
+#burger:hover #bar{
+transition:450ms;
 display: none;
 }

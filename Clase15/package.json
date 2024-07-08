@@ -1,0 +1,20 @@
+{
+  "name": "clase15",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "16.4.5",
+    "ejs": "3.1.10",
+    "express": "4.19.2",
+    "socket.io": "4.7.5"
+  }
+}
