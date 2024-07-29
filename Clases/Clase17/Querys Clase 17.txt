@@ -1,0 +1,14 @@
+ej1-- 
+SELECT COUNT(*) FROM store; => 2
+
+ej2--
+SELECT COUNT(*) FROM film WHERE length > 120; => 457
+
+ej3--
+SELECT COUNT(*) FROM payment WHERE customer_id = 472; =>26
+
+ej4--
+SELECT film_id FROM inventory WHERE inventory_id = 303; =>68
+
+ej5--
+SELECT address, district FROM address WHERE phone = '634445428822'; => 1565 Tangail Manor  |  Okinawa
