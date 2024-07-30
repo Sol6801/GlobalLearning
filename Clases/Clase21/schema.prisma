@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Places {
+  id             Int                   @id @default(autoincrement())
+  name           String                @db.VarChar(80)
+  reviewId       Reviews[]
+  usersFavPlaces UsersFavoritePlaces[]
+
+  @@map("places")
+}
+
+model Reviews {
+  id             Int                    @id @default(autoincrement())
+  title          String                 @db.VarChar(80)
+  content        String                 @db.Text
+  place          Places                 @relation(fields: [placeId], references: [id])
+  placeId        Int
+  user           User                   @relation(fields: [userId], references: [id])
+  userId         Int
+  createdAt      DateTime               @default(now()) @map("created_at")
+  updatedAt      DateTime               @updatedAt @map("updated_at")
+  usersFavReview UsersFavoriteReviews[]
+
+  @@map("reviews")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id         Int                    @id @default(autoincrement())
+  email      String                 @unique
+  name       String?
+  password   String
+  role       Role                   @default(USER)
+  createdAt  DateTime               @default(now()) @map("created_at")
+  updatedAt  DateTime?              @updatedAt @map("updated_at")
+  reviewId   Reviews[]
+  favReviews UsersFavoriteReviews[]
+  favPlaces  UsersFavoritePlaces[]
+
+  @@map("users")
+}
+
+model UsersFavoriteReviews {
+  review    Reviews  @relation(fields: [reviewId], references: [id])
+  reviewId  Int      @map("review_id")
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int      @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@id([reviewId, userId])
+  @@map("users_favorite_reviews")
+}
+
+model UsersFavoritePlaces {
+  place     Places   @relation(fields: [placeId], references: [id])
+  placeId   Int      @map("place_id")
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int      @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@id([placeId, userId])
+  @@map("users_favorite_places")
+}
