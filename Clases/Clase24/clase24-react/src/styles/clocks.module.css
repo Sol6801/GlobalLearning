@@ -1,3 +1,29 @@
-.clocks{
-    background-color: pink;
+h1{
+    margin: 2rem;
+    padding: 2rem;
+    color: #ebebeb;
 }
+.mainClock{
+    /* background-color: #8e6ddb; */
+    border: solid 1px #8e6ddb;
+    margin: 2rem auto;
+    gap: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    color:#ebebeb;
+    width: 20%;
+
+}
+
+
+.clocks{    
+    border: solid 1px #8e6ddb;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 3rem auto;
+    gap: 2rem;
+    padding: 1rem;
+    width: 60%;
+}
+
