@@ -1,0 +1,1 @@
+export const Title = () => <h1> Hola Mundo!</h1>

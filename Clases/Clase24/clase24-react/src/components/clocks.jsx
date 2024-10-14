@@ -12,7 +12,7 @@ function RelojInternacional({ zonaHoraria, nombre }) {
   
     const opciones = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
     const horaLocal = hora.toLocaleTimeString('es-ES', { timeZone: zonaHoraria, ...opciones });
-  
+
     return (
       <div>
         <h2>{nombre}</h2>
@@ -24,13 +24,30 @@ function RelojInternacional({ zonaHoraria, nombre }) {
 
 function Clocks() {
     const [showComponent, setShowComponent] = useState(false)
+
+    const handleClick = () => {
+      //!showComponent = true
+      setShowComponent((prev)=>{
+        return !prev
+    })
+    //* shrot ver: setShowComponent((prev)=> !prev) */
+    } 
+
+    useEffect(()=>{
+    console.log('se montó el componente')
+    //* limpieza de componentes cuando se desmontan*/
+   return ()=>{
+    console.log('se desmontó el componente')
+   }
+  },[showComponent])
+
     return (
       <div>
         <h1>Zona local actual:</h1>
         <section className={styles.mainClock}>
         <RelojInternacional zonaHoraria="America/Buenos_Aires" nombre="Buenos Aires" />
         </section>
-        <button onClick={() => setShowComponent(!showComponent)}>{showComponent ? 'Ocultar Horarios Internacionales' : 'Mostrar Horarios Internacionales'}</button> {/*setShowComponent(!showComponent) intercambia estado, niega negado*/}
+        <button onClick={handleClick}>{showComponent ? 'Ocultar Horarios Internacionales' : 'Mostrar Horarios Internacionales'}</button> {/*setShowComponent(!showComponent) intercambia estado, niega negado*/}
         {showComponent ?  
         <section className={styles.clocks}>
         <RelojInternacional zonaHoraria="Europe/Madrid" nombre="Madrid" />
