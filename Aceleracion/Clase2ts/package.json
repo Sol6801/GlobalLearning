@@ -1,0 +1,19 @@
+{
+  "name": "clase2ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.ts",
+  "scripts": {
+    "start": "node dist/src/index.js",
+    "build": "swc src -d dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@swc/cli": "0.4.1-nightly.20240914",
+    "@swc/core": "^1.7.35",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
